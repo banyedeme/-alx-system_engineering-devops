@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Install and configure HAproxy on lb-01 server
+
+#installation
+apt-get update
+apt-get install -y haproxy
+
+#configuration
+cat <<EOL >> /etc/haproxy/haproxy.cfg
+frontend abena_frontend
+  bind *:80
+  default_backend myservers
+
+backend myservers
+  balance roundrobin
+  server 397930-web-01 100.25.191.16:80
+  server 397930-web-02 52.91.118.253:80
+EOL
+
+#restarts haproxy
+service haproxy restart

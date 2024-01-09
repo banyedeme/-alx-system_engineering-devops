@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Server-01 login commands
+
+#Path to IdentifyFile
+ssh -i ~/.ssh/school
+
+#username and IP Address
+ssh ubuntu@100.26.171.213
