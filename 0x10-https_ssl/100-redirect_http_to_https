@@ -43,5 +43,5 @@ frontend abena_https
 
 backend myservers
   balance roundrobin
-  server 397930-web-01 100.25.191.16:80 check
-  server 397930-web-02 52.91.118.253:80 check
+  server 397930-web-01 100.25.196.62 check
+  server 397930-web-02 100.26.171.213 check
