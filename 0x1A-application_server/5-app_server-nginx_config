@@ -26,7 +26,7 @@ server {
         # listen 443 ssl default_server;
         # listen [::]:443 ssl default_server;
         #
-        rewrite ^/redirect_me https://medium.com/@josephinedassah permanent;
+        rewrite ^/redirect_me https://medium.com/@abenapomaa permanent;
         # Note: You should disable gzip for SSL traffic.
         # See: https://bugs.debian.org/773332
         #
@@ -47,6 +47,7 @@ server {
         error_page 404 /404.html;
 
         location / {
+        proxy_pass http://127.0.0.1:5003/2-hbnb;
         add_header X-Served-By "401233-web-01";
                 # First attempt to serve request as file, then
                 # as directory, then fall back to displaying a 404.
@@ -63,6 +64,9 @@ server {
         }
         location /api/ {
                 proxy_pass http://127.0.0.1:5002/api/;
+        }
+        location /static/ {
+                alias /AirBnB_clone_v4/web_dynamic/static/;
         }
 
         # pass PHP scripts to FastCGI server
